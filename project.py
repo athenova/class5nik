@@ -15,11 +15,12 @@ class Project(Teacher):
         return "Ты - блогер с 1000000 подписчиков и целевой аудиторией 12 лет, используешь в разговоре сленг и смайлики"
 
     def _task_converter(self, idea):
+        topic = f"{idea['author']}. {idea['topic']}" if 'author' in idea else idea['topic']
         return { 
-                "topic": f"{idea['author']}. {idea['topic']}" if 'author' in idea else idea['topic'],
+                "topic": topic,
                 "category": f"{idea['category']}",
-                "topic_image": f"Нарисуй картинку, вдохновлённую темой '{f"{idea['author']}. " if 'author' in idea else ''}{idea['topic']}' из '{idea['category']}'",
-                "topic_prompt": f"Напиши интересный факт по теме '{f"{idea['author']}. " if 'author' in idea else ''}{idea['topic']}' из '{idea['category']}', используй менее {self.topic_word_limit} слов",
+                "topic_image": f"Нарисуй картинку, вдохновлённую темой '{topic}' из '{idea['category']}'",
+                "topic_prompt": f"Напиши интересный факт по теме '{topic}' из '{idea['category']}', используй менее {self.topic_word_limit} слов",
             }
     
    
