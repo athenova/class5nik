@@ -16,7 +16,7 @@ class Project(Teacher):
 
     def _task_converter(self, idea):
         return { 
-                "topic": f"{f"{idea['author']}. " if 'author' in idea else ''}{idea['topic']}",
+                "topic": f"{idea['author']}. {idea['topic']}" if 'author' in idea else idea['topic'],
                 "category": f"{idea['category']}",
                 "topic_image": f"Нарисуй картинку, вдохновлённую темой '{f"{idea['author']}. " if 'author' in idea else ''}{idea['topic']}' из '{idea['category']}'",
                 "topic_prompt": f"Напиши интересный факт по теме '{f"{idea['author']}. " if 'author' in idea else ''}{idea['topic']}' из '{idea['category']}', используй менее {self.topic_word_limit} слов",
